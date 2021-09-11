@@ -1,8 +1,8 @@
-from .model import AbstractModel
-from .exchange import Exchange
-from .currency import Currency
+from models.model import AbstractModel
+from models.exchange import Exchange
+from models.currency import Currency
 
-from ..api import utils
+from api import utils
 
 class Dataset(AbstractModel):
     resource_name = 'datasets'

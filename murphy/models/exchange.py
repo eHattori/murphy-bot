@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from ..api import utils
-from .model import AbstractModel
+from api import utils
+from models.model import AbstractModel
 
 
 class Exchange(AbstractModel):

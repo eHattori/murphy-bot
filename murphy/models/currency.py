@@ -1,4 +1,4 @@
-from .model import AbstractModel
+from models.model import AbstractModel
 
 
 class Currency(AbstractModel):

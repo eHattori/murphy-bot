@@ -1,8 +1,8 @@
-from ..api import utils
-from .model import AbstractModel
-from .currency import Currency
-from .dataset import Dataset
-from .exchange import Exchange
+from api import utils
+from models.model import AbstractModel
+from models.currency import Currency
+from models.dataset import Dataset
+from models.exchange import Exchange
 
 
 class Price(AbstractModel):

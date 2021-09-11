@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 from abc import ABC, abstractmethod
 
-from murphy.models.order import Order
-from murphy.models.price import Price
+from models.order import Order
+from models.price import Price
 
 
 class Strategy(ABC):

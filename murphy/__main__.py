@@ -1,7 +1,7 @@
 import signal
 import sys
 import threading
-from .trading import main, stop
+from trading import main, stop
 
 if __name__ == '__main__':
     try:

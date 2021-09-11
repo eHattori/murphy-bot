@@ -1,9 +1,9 @@
 import datetime
-from ..api import utils
 from abc import ABC, abstractmethod
+from api import utils
 from twisted.internet import reactor
-from ..strategies.strategy import Strategy
-from ..models.order import Order
+from strategies.strategy import Strategy
+from models.order import Order
 
 
 class Exchange(ABC):

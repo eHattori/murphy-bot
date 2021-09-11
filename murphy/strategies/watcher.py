@@ -1,5 +1,5 @@
-from ..exchanges.exchange import Exchange
-from .strategy import Strategy
+from exchanges.exchange import Exchange
+from strategies.strategy import Strategy
 
 
 class Watcher(Strategy):

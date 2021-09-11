@@ -4,8 +4,8 @@ import sys
 from abc import ABC
 
 import requests
-from murphy.config import settings
-from .utils import filter_keys
+from config import settings
+from api.utils import filter_keys
 import datetime
 
 

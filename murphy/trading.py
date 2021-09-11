@@ -1,9 +1,9 @@
-from .config import settings
+from config import settings
 
-from .exchanges.binance import Binance
-from murphy.strategies.watcher import Watcher
+from exchanges.binance import Binance
+from strategies.watcher import Watcher
 
-from .services.backtest import Backtest
+from services.backtest import Backtest
 
 
 exchange = None

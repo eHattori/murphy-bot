@@ -1,9 +1,9 @@
 import sys
 from datetime import datetime
 
-from ..exchanges.exchange import Exchange
-from ..models.dataset import Dataset
-from ..models.price import Price
+from exchanges.exchange import Exchange
+from models.dataset import Dataset
+from models.price import Price
 
 
 class Backtest:

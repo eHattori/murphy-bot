@@ -1,4 +1,4 @@
-from ..api.rest import Rest
+from api.rest import Rest
 
 class AbstractModel(Rest):
     resource_name = ''

@@ -5,10 +5,10 @@ from binance.client import Client
 from binance.enums import *
 from binance.streams import ThreadedWebsocketManager
 
-from ..api import utils
-from ..exchanges import exchange
-from ..models.order import Order
-from ..models.price import Price
+from api import utils
+from exchanges import exchange
+from models.order import Order
+from models.price import Price
 
 
 class Binance(exchange.Exchange):
