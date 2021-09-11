@@ -4,19 +4,18 @@ import sys
 from abc import ABC
 
 import requests
-from murphy.config import Config
+from murphy.config import settings
 from .utils import filter_keys
 import datetime
 
 
 class Rest(ABC):
-    config = Config()
     uuid: str = None
     created: datetime = datetime.datetime.now()
     resource_name: str = ''
     relations: dict = {}
-    api_root: str = config.get('API_ROOT')
-    api_uri: str = config.get('API_URI')
+    api_root: str = settings.API_ROOT
+    api_uri: str = settings.API_URI
     client: requests = requests
     headers: dict = {'Content-type': 'application/ld+json', 'Accept': 'application/ld+json'}
     session = requests.Session()

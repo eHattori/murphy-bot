@@ -1,4 +1,4 @@
-from .config import Config
+from .config import settings
 
 from .exchanges.binance import Binance
 from murphy.strategies.watcher import Watcher
@@ -8,18 +8,17 @@ from .services.backtest import Backtest
 
 exchange = None
 def main():
-    config = Config()
-    exchange = Binance(key=config.BINANCE_API_KEY, secret=config.BINANCE_API_SECRET)
+    exchange = Binance(key=settings.api_key, secret=settings.api_secret)
 
     print("Connecting to {} exchange...".format(exchange.name.upper()))
 
-    exchange.set_currency(config.CURRENCY)
-    exchange.set_asset(config.ASSET)
+    exchange.set_currency(settings.currency)
+    exchange.set_asset(settings.asset)
 
     exchange.set_strategy(Watcher(exchange=exchange))
 
     print("{} mode on {} symbol".format('live', exchange.get_symbol()))
-    exchange.strategy.start()
+
     # if mode == 'trade':
     #     exchange.strategy.start()
     
