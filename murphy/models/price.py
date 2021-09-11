@@ -17,11 +17,11 @@ class Price(Base):
     asset: str = Column(String)
     openAt: str = Column(String)
 
-    dataset_id: str = Column(String, ForeignKey("datasets.pair"))
+    dataset_id: str = Column(String, ForeignKey("datasets.pair"), nullable=True)
     dataset: Dataset =  relationship("Dataset")
 
-    exchange_id: int = Column(Integer, ForeignKey("exchanges.id"))
+    exchange_id: int = Column(Integer, ForeignKey("exchanges.id"), nullable=True)
     exchange: Exchange = relationship("Exchange")
 
-    currency_id: str = Column(String, ForeignKey("currency.symbol"))
+    currency_id: str = Column(String, ForeignKey("currencies.symbol"), nullable=True)
     currency: Currency = relationship("Currency")

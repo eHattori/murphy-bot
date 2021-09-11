@@ -24,7 +24,7 @@ def main():
     #     exchange.strategy.start()
     
     # elif mode == 'live':
-    # exchange.start_symbol_ticker_socket(exchange.get_symbol())
+    exchange.start_symbol_ticker_socket(exchange.get_symbol())
     
     # elif mode == 'backtest':
     # period_start = config.get('PERIOD_START')
