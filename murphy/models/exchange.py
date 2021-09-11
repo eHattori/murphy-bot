@@ -1,14 +1,8 @@
-from datetime import datetime
+from sqlalchemy import Column, String, Integer
+from .base import Base
 
-from api import utils
-from models.model import AbstractModel
+class Exchange(Base):
+    __tablename__ = 'exchanges'
 
-
-class Exchange(AbstractModel):
-    resource_name = 'exchanges'
-
-    id: str = ''
-    name: str = ''
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    id: int = Column(Integer, primary_key=True)
+    name: str = Column(String)

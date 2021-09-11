@@ -1,24 +1,24 @@
-from models.model import AbstractModel
-from models.exchange import Exchange
-from models.currency import Currency
 
-from api import utils
+from .base import Base
+from .exchange import Exchange
+from .currency import Currency
+from sqlalchemy import Column, String, ForeignKey, Integer
+from sqlalchemy.orm import relationship
 
-class Dataset(AbstractModel):
-    resource_name = 'datasets'
 
-    pair: str = ''
-    exchange: str = ''
-    period_start: str = ''
-    period_end: str = ''
-    currency: str = ''
-    asset: str = ''
+class Dataset(Base):
+    __tablename__ = 'datasets'
 
-    relations = {'exchange': Exchange, 'currency': Currency, 'asset': Currency}
+    pair: str = Column(String, primary_key=True)
+    period_start: str = Column(String)
+    period_end: str = Column(String)
+    currency: str = Column(String)
+    asset: str = Column(String)
+    
+    exchange_id: int = Column(Integer, ForeignKey("exchanges.id"))
+    exchange: Exchange =  relationship("Exchange")
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.pair = self.get_pair()
+    currency_id: str = Column(String, ForeignKey("currencies.symbol"))
+    currency: Currency = relationship("Currency")
 
-    def get_pair(self):
-        return utils.format_pair(self.currency, self.asset)
+

@@ -1,12 +1,10 @@
-from models.model import AbstractModel
+from .base import Base
+from sqlalchemy import Boolean, Column, String
 
+class Currency(Base):
+    __tablename__ = 'currencies'
 
-class Currency(AbstractModel):
-    resource_name = 'currencies'
+    name: str = Column(String) 
+    symbol: str = Column(String, primary_key=True)
+    enabled: bool = Column(Boolean)
 
-    name: str = ''
-    symbol: str = ''
-    fiat: bool
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)

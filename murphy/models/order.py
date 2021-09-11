@@ -1,7 +1,7 @@
-from models.model import AbstractModel
+from sqlalchemy import Column, Boolean, String, Integer, Float
+from .base import Base
 
-
-class Order(AbstractModel):
+class Order(Base):
     BUY = 'BUY'
     SELL = 'SELL'
 
@@ -13,15 +13,13 @@ class Order(AbstractModel):
     TYPE_TAKE_PROFIT_LIMIT = 'TAKE_PROFIT_LIMIT'
     TYPE_LIMIT_MAKER = 'LIMIT_MAKER'
 
-    resource_name = 'orders'
+    __tablename__ = 'orders'
 
-    type: str = TYPE_LIMIT
-    symbol: str = ''
-    currency: str = ''
-    asset: str = ''
-    price: float = 0
-    quantity: int = 0
-    test: bool = False
+    type: str = Column(String, default=TYPE_LIMIT)
+    symbol: str = Column(String, primary_key=True)
+    currency: str = Column(String)
+    asset: str = Column(String)
+    price: float = Column(Float)
+    quantity: int = Column(Integer)
+    test: bool = Column(Boolean, default=False)
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)

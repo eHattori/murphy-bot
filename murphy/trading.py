@@ -2,12 +2,13 @@ from config import settings
 
 from exchanges.binance import Binance
 from strategies.watcher import Watcher
-
+from database import Database
 from services.backtest import Backtest
 
 
 exchange = None
 def main():
+    Database()
     exchange = Binance(key=settings.api_key, secret=settings.api_secret)
 
     print("Connecting to {} exchange...".format(exchange.name.upper()))

@@ -14,7 +14,8 @@ class Config:
                 'candle_interval': 60,
                 'api_key': None,
                 'api_secret': None,
-                'exchange': 'binance'
+                'exchange': 'binance',
+                'database_url': 'sqlite:///data/crypto_trading.db'
                 }
 
         if os.path.exists(self.CFG_FL_NAME):

@@ -1,30 +1,27 @@
-from api import utils
-from models.model import AbstractModel
-from models.currency import Currency
-from models.dataset import Dataset
-from models.exchange import Exchange
+from sqlalchemy import Column, String, Float, ForeignKey, Integer
+from sqlalchemy.orm import relationship
 
+from .base import Base
+from .dataset import Dataset
+from .exchange import Exchange
+from .currency import Currency
 
-class Price(AbstractModel):
-    resource_name = 'prices'
+class Price(Base):
+    __tablename__ = 'prices'
 
-    dataset: str = ''
-    pair: str = ''
-    exchange: str = ''
-    current: float = 0
-    lowest: float = 0
-    highest: float = 0
-    volume: float = 0
-    currency: str = ''
-    asset: str = ''
-    dataset: str = ''
-    openAt: str
+    pair: str = Column(String, primary_key=True) 
+    current: float = Column(Float, default=0)
+    lowest: float = Column(Float, default=0)
+    highest: float = Column(Float, default=0)
+    volume: float = Column(Float, default=0)
+    asset: str = Column(String)
+    openAt: str = Column(String)
 
-    relations = {'exchange': Exchange, 'currency': Currency, 'asset': Currency, 'dataset': Dataset}
+    dataset_id: str = Column(String, ForeignKey("datasets.pair"))
+    dataset: Dataset =  relationship("Dataset")
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.pair = self.get_pair()
+    exchange_id: int = Column(Integer, ForeignKey("exchanges.id"))
+    exchange: Exchange = relationship("Exchange")
 
-    def get_pair(self):
-        return utils.format_pair(self.currency, self.asset)
+    currency_id: str = Column(String, ForeignKey("currency.symbol"))
+    currency: Currency = relationship("Currency")
