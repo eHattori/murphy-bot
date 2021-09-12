@@ -15,7 +15,7 @@ class Config:
                 'api_key': None,
                 'api_secret': None,
                 'exchange': 'binance',
-                'database_url': 'sqlite:///data/crypto_trading.db'
+                'database_url': 'sqlite:///murphy.db'
                 }
 
         if os.path.exists(self.CFG_FL_NAME):

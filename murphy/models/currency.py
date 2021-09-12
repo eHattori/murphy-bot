@@ -8,3 +8,5 @@ class Currency(Base):
     symbol: str = Column(String, primary_key=True)
     enabled: bool = Column(Boolean)
 
+
+
