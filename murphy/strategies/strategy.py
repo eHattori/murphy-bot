@@ -85,9 +85,5 @@ class Strategy(ABC):
 
     def order(self, order: Order):
         print(order)
-        if self.test:
-            exchange_order = self.exchange.test_order(order)
-        else:
-            exchange_order = self.exchange.order(order)
+        exchange_order = self.exchange.order(order)
 
-        print(exchange_order)

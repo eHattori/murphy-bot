@@ -1,6 +1,6 @@
 from config import settings
 
-from exchanges.binance import Binance
+from exchanges.mock_binance import MockBinance
 from strategies.watcher import Watcher
 from database import Database
 from services.backtest import Backtest
@@ -9,7 +9,7 @@ from services.backtest import Backtest
 exchange = None
 def main():
     Database.build()
-    exchange = Binance(key=settings.api_key, secret=settings.api_secret)
+    exchange = MockBinance(key=settings.api_key, secret=settings.api_secret)
 
     print("Connecting to {} exchange...".format(exchange.name.upper()))
 
@@ -20,13 +20,6 @@ def main():
 
     print("{} mode on {} symbol".format('live', exchange.get_symbol()))
 
-    # if mode == 'trade':
-    #     exchange.strategy.start()
-    
-    # elif mode == 'live':
-    # exchange.start_symbol_ticker_socket(exchange.get_symbol())
-    
-    # elif mode == 'backtest':
     period_start = '2021-09-01T08:49' 
     period_end = '2021-09-11T08:49'
     interval = settings.candle_interval 
