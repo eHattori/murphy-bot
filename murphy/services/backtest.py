@@ -25,6 +25,7 @@ class Backtest:
         coin.enabled = True
         coin.save()
 
-        exchange.set_currency(coin.symbol) 
-        exchange.strategy.start()
+        exchange.set_currency(coin.symbol)
+        exchange.strategy.balance = 100
+        exchange.strategy.start_backtest(start_date, end_date, interval)
 

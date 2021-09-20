@@ -23,6 +23,7 @@ class Strategy(ABC):
         self.next_call = time.time()
         self.portfolio = {}
         self.test = True
+        self.balance = 0
 
     def _run(self):
         self.is_running = False
@@ -33,6 +34,21 @@ class Strategy(ABC):
     @abstractmethod
     def run(self):
         pass
+
+
+    def start_backtest(self, period_start, period_end, interval):
+        prices = self.exchange.historical_symbol_ticker_candle(period_start, period_end)
+        
+        firt_price = float(prices[0].current)
+        self.balance = self.balance / firt_price
+        first_balance = self.balance
+
+        for price in prices:
+            self.set_price(price)
+            self.run()
+
+        print('START With: ', first_balance)
+        print('ENDED With: ', self.balance if self.balance else self.current_position)
 
     def start(self):
         if not self.is_running:
