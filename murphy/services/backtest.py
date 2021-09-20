@@ -24,14 +24,7 @@ class Backtest:
         coin.name = 'Bitcoin'
         coin.enabled = True
         coin.save()
-        balance = exchange.get_asset_balance(coin.symbol)
-        
 
-        import pdb; pdb.set_trace()
-        
-
-
-
-
-
+        exchange.set_currency(coin.symbol) 
+        exchange.strategy.start()
 

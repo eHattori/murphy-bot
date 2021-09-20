@@ -1,7 +1,7 @@
 from config import settings
 
 from exchanges.mock_binance import MockBinance
-from strategies.watcher import Watcher
+from strategies.default_strategy import DefaultStrategy
 from database import Database
 from services.backtest import Backtest
 
@@ -16,8 +16,7 @@ def main():
     exchange.set_currency(settings.currency)
     exchange.set_asset(settings.asset)
 
-    exchange.set_strategy(Watcher(exchange=exchange))
-
+    exchange.set_strategy(DefaultStrategy(exchange=exchange))
     print("{} mode on {} symbol".format('live', exchange.get_symbol()))
 
     period_start = '2021-09-01T08:49' 

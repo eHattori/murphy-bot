@@ -67,7 +67,7 @@ class Binance(exchange.Exchange):
 
     def get_asset_balance(self, currency):
         response = self.client.get_asset_balance(currency)
-        return response['free']
+        return float(response['free']) if response and 'free' in response else 0.0
 
     def order(self, order: Order):
         return self.client.create_order(
